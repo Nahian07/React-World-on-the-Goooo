@@ -6,6 +6,7 @@ import './countries.css'
 const Countries = ({countriesPromise}) => {
     const countriesdata = use(countriesPromise);
     const countries = countriesdata.countries;
+
     // console.log(countries);
     
     return (
@@ -13,7 +14,7 @@ const Countries = ({countriesPromise}) => {
             <h2>All The Countries : {countries.length}</h2>
             <div className="country">
                 {
-                    countries.map(country => <Country country = {country}></Country> )
+                    countries.map(country => <Country key={country.cca3.cca3}  country = {country}></Country> )
                 }
             </div>
         </div>

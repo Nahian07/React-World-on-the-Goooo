@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './country.css';
 
 const Country = ({country}) => {
-    // console.log(country.area.area);
+    // console.log(country.cca3.cca3);
+    const [visited, setVisited] = useState(false);
+
     const visitHandler = () => {
-        console.log("clicked");
-        
+        if(visited)
+        {
+            setVisited(false);
+        }
+        else
+        {
+            setVisited(true);
+        }
     }
     
     return (
@@ -15,7 +23,11 @@ const Country = ({country}) => {
             <h4>Region : {country.region.region}</h4>
             <p>Capital : {country.capital.capital}</p>
             <p>Area : {country.area.area} {country.area.area > 300000 ? '(Big Country)' : '(Small Country)'}</p>
-            <button onClick={visitHandler}>Not Visited</button>
+            <button className={`${visited && 'visited-Btn'}`} onClick={visitHandler}>
+                {
+                    (visited ? "Visited" : "Not Visited")
+                }
+            </button>
         </div>
     );
 };
